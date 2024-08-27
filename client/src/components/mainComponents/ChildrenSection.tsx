@@ -1,5 +1,6 @@
 import React from "react";
 import { useApiContext } from "../contextApi/ApiContext";
+import Button from "./UI/Button";
 
 const ChildrenSection: React.FC = () => {
   const { state, dispatch } = useApiContext();
@@ -16,24 +17,26 @@ const ChildrenSection: React.FC = () => {
 
   return (
     <div className="mb-6">
-      <p className="mb-2">Do you have any children?*</p>
+      <p className="mb-2 font-bold">Do you have any children?*</p>
       <div className="flex gap-4 mb-4">
-        <button
-          onClick={() => dispatch({ type: "SET_HAS_CHILDREN", payload: true })}
-          className={`${
+        <Button
+          design={`${
             hasChildren === true ? "bg-blue-500 text-white" : "bg-gray-200"
           } py-2 px-4 rounded`}
-        >
-          Yes
-        </button>
-        <button
-          onClick={() => dispatch({ type: "SET_HAS_CHILDREN", payload: false })}
-          className={`${
+          text="Yes"
+          handleFunctionality={() =>
+            dispatch({ type: "SET_HAS_CHILDREN", payload: true })
+          }
+        />
+        <Button
+          design={`${
             hasChildren === false ? "bg-blue-500 text-white" : "bg-gray-200"
           } py-2 px-4 rounded`}
-        >
-          No
-        </button>
+          text="No"
+          handleFunctionality={() =>
+            dispatch({ type: "SET_HAS_CHILDREN", payload: false })
+          }
+        />
       </div>
 
       {hasChildren && (
@@ -55,18 +58,19 @@ const ChildrenSection: React.FC = () => {
                 className="border p-2 rounded w-full"
               />
               {children.length > 1 && (
-                <button
-                  onClick={() => handleRemoveChild(index)}
-                  className="text-red-500 ml-2"
-                >
-                  Delete
-                </button>
+                <Button
+                  design="text-red-500 ml-2"
+                  text="Delete"
+                  handleFunctionality={() => handleRemoveChild(index)}
+                />
               )}
             </div>
           ))}
-          <button onClick={handleAddChild} className="text-blue-500 mt-2">
-            + Click to add another
-          </button>
+          <Button
+            design="text-blue-500 mt-2"
+            text="+ Click to add another"
+            handleFunctionality={handleAddChild}
+          />
         </div>
       )}
     </div>

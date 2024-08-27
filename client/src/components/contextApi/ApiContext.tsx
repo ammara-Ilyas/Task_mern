@@ -1,20 +1,32 @@
-// ApiContext.tsx
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
-import { State, Action } from "../types/Type";
-import { reducer } from "./ApiReducer";
-import { initialState } from "./ApiReducer";
+import axios from "axios";
+import { State } from "../types/Type";
+import { reducer } from "../reducer/ApiReducer";
+import { initialState } from "../reducer/ApiReducer";
+import { ApiContextType } from "../types/Type";
 
-const ApiContext = createContext<
-  { state: State; dispatch: React.Dispatch<Action> } | undefined
->(undefined);
+const ApiContext = createContext<ApiContextType | undefined>(undefined);
 
 export const ApiProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const saveData = async (data: State) => {
+    try {
+      const response = await axios.post(`http://localhost:8000/api/will`, data);
+
+      console.log("response", response);
+      if (response.status === 201) {
+        dispatch({ type: "RESET_STATE" });
+      }
+    } catch (error) {
+      console.error("Failed to post data:", error);
+    }
+  };
+
   return (
-    <ApiContext.Provider value={{ state, dispatch }}>
+    <ApiContext.Provider value={{ state, dispatch, saveData }}>
       {children}
     </ApiContext.Provider>
   );
