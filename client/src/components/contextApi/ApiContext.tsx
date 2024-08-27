@@ -14,7 +14,7 @@ export const ApiProvider: React.FC<{ children: ReactNode }> = ({
 
   const saveData = async (data: State) => {
     try {
-      if (data.hasChildren == true) {
+      if (data.hasChildren == true || data.underageChildren == true) {
         const response = await axios.post(`/api/will`, data);
 
         console.log("response", response);
