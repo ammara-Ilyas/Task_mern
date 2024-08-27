@@ -7,7 +7,7 @@ const UnderageSection: React.FC = () => {
   const { underageChildren } = state;
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 flex flex-col space-y-3">
       <p className="mb-2 font-bold">
         Are any of your children under the age of 18?*
       </p>

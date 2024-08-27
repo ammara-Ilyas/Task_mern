@@ -16,7 +16,7 @@ const ChildrenSection: React.FC = () => {
   };
 
   return (
-    <div className="mb-6">
+    <div className="mb-6 flex flex-col space-y-3">
       <p className="mb-2 font-bold">Do you have any children?*</p>
       <div className="flex gap-4 mb-4">
         <Button
