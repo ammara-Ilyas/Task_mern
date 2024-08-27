@@ -14,11 +14,13 @@ export const ApiProvider: React.FC<{ children: ReactNode }> = ({
 
   const saveData = async (data: State) => {
     try {
-      const response = await axios.post(`/api/will`, data);
+      if (data.hasChildren == true) {
+        const response = await axios.post(`/api/will`, data);
 
-      console.log("response", response);
-      if (response.status === 201) {
-        dispatch({ type: "RESET_STATE" });
+        console.log("response", response);
+        if (response.status === 201) {
+          dispatch({ type: "RESET_STATE" });
+        }
       }
     } catch (error) {
       console.error("Failed to post data:", error);

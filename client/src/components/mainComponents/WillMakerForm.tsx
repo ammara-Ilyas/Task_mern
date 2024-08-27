@@ -17,15 +17,14 @@ const WillMakerForm: React.FC = () => {
       guardians: state.guardians,
     };
 
-    console.log("Form data:", formData);
+    // console.log("Form data:", formData);
 
     if (typeof saveData === "function") {
       saveData(formData);
+      // console.log("Form submitted!");
     } else {
       console.error("saveData is undefined or not a function");
     }
-
-    console.log("Form submitted!");
   };
 
   return (
