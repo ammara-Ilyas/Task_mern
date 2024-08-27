@@ -14,7 +14,7 @@ export const ApiProvider: React.FC<{ children: ReactNode }> = ({
 
   const saveData = async (data: State) => {
     try {
-      const response = await axios.post(`http://localhost:8000/api/will`, data);
+      const response = await axios.post(`/api/will`, data);
 
       console.log("response", response);
       if (response.status === 201) {
