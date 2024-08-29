@@ -29,7 +29,7 @@ const WillMakerForm: React.FC = () => {
 
   return (
     <form className="p-4" onSubmit={handleSubmit}>
-      <h2 className="text-xl font-semibold mb-4">
+      <h2 className="text-[22px] font-bold mb-4">
         Children and Guardianship of Minors
       </h2>
 
@@ -39,7 +39,7 @@ const WillMakerForm: React.FC = () => {
 
       <button
         type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded w-full"
+        className="bg-cyan-500 text-white py-3 px-4 rounded w-full"
       >
         Save & Continue
       </button>

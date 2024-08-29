@@ -1,12 +1,14 @@
+import vector from "../../../assets/Vector.png";
+import frame from "../../../assets/Frame.png";
 const HeaderContent = () => {
   return (
-    <div className="flex justify-between items-center mt-3">
-      <button className="text-2xl">&#8249;</button>
+    <div className="flex justify-between items-center h-[43px]">
+      <img src={vector} alt="vector" />
       <div className="text-center">
-        <h1 className="text-base font-semibold">Dula Will Maker</h1>
-        <p className="text-xs opacity-75">Tony’s Last Will & Testament</p>
+        <h1 className="text-base font-semibold text-[18px]">Dula Will Maker</h1>
+        <p className="text-[15px] opacity-75">Tony’s Last Will & Testament</p>
       </div>
-      <button className="text-xl">⋮</button>
+      <img src={frame} alt="frame" />
     </div>
   );
 };

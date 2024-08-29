@@ -1,12 +1,15 @@
 import HeaderContent from "./widgets/HeaderContent";
-import HeaderTabs from "./widgets/HeaderTab";
-
+import StepIndicator from "./widgets/HeaderTab";
+import TopBar from "./widgets/Topbar";
 const Header = () => {
   return (
-    <header className="bg-gradient-to-r from-cyan-500 to-blue-500 flex flex-col space-y-5 rounded-t-md mb-3 text-white p-4">
-      <HeaderContent />
-      <HeaderTabs />
-    </header>
+    <>
+      <header className="bg-gradient-to-r from-cyan-500 to-blue-500 flex flex-col space-y-5  text-white p-4 pb-6 ">
+        <TopBar />
+        <HeaderContent />
+      </header>
+      <StepIndicator />
+    </>
   );
 };
 

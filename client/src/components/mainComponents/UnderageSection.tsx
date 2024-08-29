@@ -7,15 +7,17 @@ const UnderageSection: React.FC = () => {
   const { underageChildren } = state;
 
   return (
-    <div className="mb-6 flex flex-col space-y-3">
-      <p className="mb-2 font-bold">
+    <div className="mb-6 flex flex-col space-y-3 h-[127px]">
+      <p className=" font-bold text-[18px]">
         Are any of your children under the age of 18?*
       </p>
-      <div className="flex gap-4">
+      <div className="flex justify-between h-[69px] ">
         <Button
           design={`${
-            underageChildren === true ? "bg-blue-500 text-white" : "bg-gray-200"
-          } py-2 px-4 rounded`}
+            underageChildren === true
+              ? "bg-cyan-50 text-cyan-500"
+              : "bg-white text-black"
+          } py-2 px-4  rounded-md w-[160px] border-2  border-cyan-400`}
           text="Yes"
           handleFunctionality={() =>
             dispatch({ type: "SET_UNDERAGE_CHILDREN", payload: true })
@@ -24,9 +26,9 @@ const UnderageSection: React.FC = () => {
         <Button
           design={`${
             underageChildren === false
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200"
-          } py-2 px-4 rounded`}
+              ? "bg-cyan-50 text-cyan-500"
+              : "bg-white  text-black"
+          } py-2 px-4 rounded-md w-[160px] border-2  border-cyan-400`}
           text="No"
           handleFunctionality={() =>
             dispatch({ type: "SET_UNDERAGE_CHILDREN", payload: false })

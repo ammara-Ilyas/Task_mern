@@ -21,46 +21,60 @@ const GuardianSection: React.FC = () => {
   return (
     <>
       {underageChildren && (
-        <div className="mb-6">
-          <p className="mb-2">
+        <div className="mb-6 w-[348px] flex flex-col justify-between ">
+          <p className="text-[18px] ">
             In order of preference, who would you like to be the child's
             guardian if your minor child is left parentless when you pass away?*
           </p>
-          {guardians.map((guardian, index) => (
-            <div key={index} className="mb-4">
-              <input
-                type="text"
-                value={guardian.name}
-                onChange={(e) => {
-                  const newGuardians = [...guardians];
-                  newGuardians[index].name = e.target.value;
-                  dispatch({ type: "SET_GUARDIANS", payload: newGuardians });
-                }}
-                placeholder="Full name of first choice"
-                className="border p-2 rounded w-full mb-2"
-              />
-              <input
-                type="text"
-                value={guardian.relationship}
-                onChange={(e) => {
-                  const newGuardians = [...guardians];
-                  newGuardians[index].relationship = e.target.value;
-                  dispatch({ type: "SET_GUARDIANS", payload: newGuardians });
-                }}
-                placeholder="Relationship"
-                className="border p-2 rounded w-full"
-              />
-              {guardians.length > 1 && (
-                <Button
-                  design="text-red-500 mt-2"
-                  text="Delete"
-                  handleFunctionality={() => handleRemoveGuardian(index)}
-                />
-              )}
-            </div>
-          ))}
+          <div className=" flex flex-col justify-between ">
+            {guardians.map((guardian, index) => (
+              <div key={index} className="mb-4">
+                <div className=" ">
+                  {" "}
+                  <input
+                    type="text"
+                    value={guardian.name}
+                    onChange={(e) => {
+                      const newGuardians = [...guardians];
+                      newGuardians[index].name = e.target.value;
+                      dispatch({
+                        type: "SET_GUARDIANS",
+                        payload: newGuardians,
+                      });
+                    }}
+                    placeholder="Full name of first choice"
+                    className="border-2 rounded-md placeholder:font-semibold p-2  w-full mb-2"
+                  />
+                </div>
+                <div className="mt-1 ">
+                  <p className="text-[18px] font-semibold px-2">Relationship</p>
+                  <input
+                    type="text"
+                    value={guardian.relationship}
+                    onChange={(e) => {
+                      const newGuardians = [...guardians];
+                      newGuardians[index].relationship = e.target.value;
+                      dispatch({
+                        type: "SET_GUARDIANS",
+                        payload: newGuardians,
+                      });
+                    }}
+                    placeholder="Parent"
+                    className="border-2 outline-none p-2   rounded-md w-full"
+                  />
+                </div>
+                {guardians.length > 1 && (
+                  <Button
+                    design="text-red-500  float-right mt-2 mr-2 "
+                    text="Delete"
+                    handleFunctionality={() => handleRemoveGuardian(index)}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
           <Button
-            design="text-blue-500"
+            design="text-cyan-300 border-2 border-cyan-300 rounded-md border-dashed py-2"
             text="+ Click to add another"
             handleFunctionality={handleAddGuardian}
           />
